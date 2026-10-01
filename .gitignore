@@ -1,0 +1,26 @@
+# Build
+target/
+build/
+dist/
+
+# IDE
+.idea/
+*.iml
+.vscode/
+.settings/
+.classpath
+.project
+
+# Node
+node_modules/
+medicore-frontend/dist/
+*.log
+npm-debug.log*
+
+# Env / local
+.env
+*.local.properties
+
+# OS
+.DS_Store
+Thumbs.db
