@@ -1,6 +1,6 @@
 package com.medicore.appointment.feign;
 
-import com.medicore.appointment.feign.dto.PatientSnapshotDto;
+import com.medicore.appointment.feign.dto.Snapshots.PatientSnapshotDto;
 import com.medicore.common.dto.ApiResponse;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;

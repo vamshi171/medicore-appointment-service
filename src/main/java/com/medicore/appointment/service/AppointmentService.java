@@ -237,7 +237,10 @@ public class AppointmentService {
 
     private void ensureNoOverlap(Long doctorId, LocalDateTime start) {
         LocalDateTime end = start.plusMinutes(SLOT_MINUTES);
-        List<Appointment> overlapping = appointmentRepository.findOverlapping(doctorId, start, end);
+        List<Appointment> overlapping = appointmentRepository.findOverlapping(
+                doctorId,
+                List.of(Appointment.Status.SCHEDULED, Appointment.Status.CONFIRMED),
+                start, end);
         if (!overlapping.isEmpty()) {
             throw new BadRequestException("That slot has just been taken. Please choose another time.");
         }

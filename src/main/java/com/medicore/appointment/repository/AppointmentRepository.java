@@ -8,6 +8,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
 import java.time.LocalDateTime;
+import java.util.Collection;
 import java.util.List;
 
 public interface AppointmentRepository extends JpaRepository<Appointment, Long> {
@@ -24,12 +25,12 @@ public interface AppointmentRepository extends JpaRepository<Appointment, Long> 
     @Query("""
             SELECT a FROM Appointment a
             WHERE a.doctorId = :doctorId
-              AND a.status IN (com.medicore.appointment.entity.Appointment.Status.SCHEDULED,
-                               com.medicore.appointment.entity.Appointment.Status.CONFIRMED)
+              AND a.status IN :statuses
               AND a.appointmentDate < :end
               AND a.appointmentDate >= :start
             """)
     List<Appointment> findOverlapping(@Param("doctorId") Long doctorId,
+                                      @Param("statuses") Collection<Appointment.Status> statuses,
                                       @Param("start") LocalDateTime start,
                                       @Param("end") LocalDateTime end);
 

@@ -76,7 +76,7 @@ class AppointmentServiceTest {
     void booksSuccessfully() {
         when(doctorClient.getDoctor(100L)).thenReturn(ApiResponse.ok(doctor));
         when(patientClient.getPatientByUserId(10L)).thenReturn(ApiResponse.ok(patient));
-        when(appointmentRepository.findOverlapping(eq(100L), any(), any())).thenReturn(List.of());
+        when(appointmentRepository.findOverlapping(eq(100L), any(), any(), any())).thenReturn(List.of());
         when(appointmentRepository.save(any(Appointment.class)))
                 .thenAnswer(inv -> inv.getArgument(0));
 
@@ -96,7 +96,7 @@ class AppointmentServiceTest {
         Appointment existing = new Appointment();
         existing.setDoctorId(100L);
         existing.setAppointmentDate(slot);
-        when(appointmentRepository.findOverlapping(eq(100L), any(), any()))
+        when(appointmentRepository.findOverlapping(eq(100L), any(), any(), any()))
                 .thenReturn(List.of(existing));
 
         assertThrows(BadRequestException.class,

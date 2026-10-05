@@ -1,6 +1,6 @@
 package com.medicore.appointment.feign;
 
-import com.medicore.appointment.feign.dto.PatientSnapshotDto;
+import com.medicore.appointment.feign.dto.Snapshots.PatientSnapshotDto;
 import com.medicore.common.dto.ApiResponse;
 import com.medicore.common.exception.ServiceUnavailableException;
 import org.slf4j.Logger;
