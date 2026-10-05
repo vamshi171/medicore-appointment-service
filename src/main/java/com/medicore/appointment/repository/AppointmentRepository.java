@@ -43,6 +43,8 @@ public interface AppointmentRepository extends JpaRepository<Appointment, Long> 
                                     @Param("dayStart") LocalDateTime dayStart,
                                     @Param("dayEnd") LocalDateTime dayEnd);
 
+    boolean existsByDoctorIdAndAppointmentDate(Long doctorId, LocalDateTime appointmentDate);
+
     long countByStatus(Appointment.Status status);
 
     long countByDoctorIdAndStatus(Long doctorId, Appointment.Status status);
